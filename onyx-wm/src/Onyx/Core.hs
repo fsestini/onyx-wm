@@ -133,17 +133,20 @@ overWorkspace sp f = withWorkspace sp $ \l tws -> do
     wmsSpaceLayouts . at (spcID sp) . _Just . current .= SL newL
     wmsTiled %= overSubstring ((`elem` (fmap twWid tws)) . twWid) (const newTws)
 
-withWorkspace
-  :: Space
-  -> (forall l. Layout l => l -> [TiledWindow] -> EOnyx ())
-  -> EOnyx ()
-withWorkspace sp f = do
+workspace :: Space -> EOnyx (SomeLayout, [TiledWindow])
+workspace sp = do
+  liftOnyx (checkS (spcID sp))
   allTiled <- use wmsTiled
   tiledInSpace <- liftIO (filterM (spaceHasWindow sp . _twWindow) allTiled)
   visibleTiles <- filterM (isWindowVisible . _twWindow) tiledInSpace
   mly <- preuse (wmsSpaceLayouts . at (spcID sp) . _Just . current)
-  maybe (throwError err) (\(SL l) -> f l visibleTiles) mly
-  where err = UnknownSpace (spcID sp)
+  maybe (throwError (UnknownSpace (spcID sp))) (pure . (,visibleTiles)) mly
+
+withWorkspace
+  :: Space
+  -> (forall l. Layout l => l -> [TiledWindow] -> EOnyx ())
+  -> EOnyx ()
+withWorkspace sp f = workspace sp >>= \(SL l, tws) -> f l tws
 
 checkS' :: SpaceID -> NonEmpty SomeLayout -> Onyx ()
 checkS' sid l =
