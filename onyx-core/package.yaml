@@ -1,0 +1,64 @@
+name:                onyx-core
+version:             0.1.0.0
+license:             BSD3
+
+extra-source-files:
+- cbits/application.m
+- cbits/carbon.m
+- cbits/display.m
+- cbits/workspace.m
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            System
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github
+
+dependencies:
+- base >= 4.7 && < 5
+- stm
+- managed
+- composition
+- containers
+- mtl
+- split
+# - transformers
+- time
+# - freer-simple
+- microlens-platform
+- extra
+- monad-loops
+- mmorph
+- ether
+- safe
+
+library:
+  source-dirs: src
+  default-extensions:
+  - TypeFamilies
+  - RecordWildCards
+  - TupleSections
+  - FlexibleInstances
+  - MultiParamTypeClasses
+  - FlexibleContexts
+  - GeneralizedNewtypeDeriving
+  - UndecidableInstances
+
+  ghc-options:
+  - -Wall
+  - -Wno-unused-top-binds
+  - -Wcompat
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wredundant-constraints
+  - -Wno-unticked-promoted-constructors
+  # - -Werror
+  frameworks: Carbon, Cocoa
+  c-sources:
+  - cbits/*.m
+  - cbits/*.c
+  include-dirs: cbits
+  cc-options: -Wno-deprecated -Wno-int-to-void-pointer-cast
