@@ -9,7 +9,7 @@ import Onyx.Prelude hiding (at)
 import qualified ExceptExtra as E (throwError)
 import Data.Map (Map)
 import qualified Data.Map as M
-import ExceptExtra (MonadError(..), ExceptT, logAndContinue)
+import ExceptExtra (MonadError(..), ExceptT, logAndContinue,runExceptT)
 import Data.Typeable (Typeable, cast)
 import Utils
 import Data.List.NonEmptyZipper
@@ -89,6 +89,9 @@ newtype Onyx a = Onyx { unOnyx :: ReaderT OnyxConfig (StateT OnyxState Mac) a }
 newtype EOnyx a = EOnyx { unEOnyx :: ExceptT WMError Onyx a }
   deriving (Functor, Applicative, Monad, MonadIO, MonadMac,
             MonadReader OnyxConfig, MonadState OnyxState)
+
+eToM :: EOnyx a -> Onyx (Maybe a)
+eToM = fmap (either (const Nothing) Just) . runExceptT . unEOnyx
 
 instance MonadError MacError EOnyx where
   throwError = EOnyx . E.throwError . MacError
