@@ -9,7 +9,7 @@ int mykCGHeadInsertEventTap() { return kCGHeadInsertEventTap; }
 int mykCGSessionEventTap() { return kCGSessionEventTap; }
 uint32_t mykCGEventFlagMaskSecondaryFn() { return kCGEventFlagMaskSecondaryFn; }
 CFAllocatorRef mykCFAllocatorDefault() { return kCFAllocatorDefault; }
-CFRunLoopMode mykCFRunLoopCommonModes() { return kCFRunLoopCommonModes; }
+CFStringRef mykCFRunLoopCommonModes() { return kCFRunLoopCommonModes; }
 
 CGEventField kCGKeyboardEventKeycode_() { return kCGKeyboardEventKeycode; }
 
