@@ -11,6 +11,7 @@ module MacOS.Space
   , moveToSpace
   , startWorkspaceEvents
   , allSpaces
+  , windowsInSpace
   ) where
 
 import Onyx.Prelude
@@ -96,6 +97,9 @@ allSpaces' = do
 -- | Returns whether the space currently contains the specified window.
 spaceHasWindow :: MonadIO m => Space -> Window -> m Bool
 spaceHasWindow sp w = liftIO (spaceIDHasWindowID (spcID sp) (_windowID w))
+
+windowsInSpace :: MonadMac m => Space -> m [Window]
+windowsInSpace sp = wins >>= filterM (spaceHasWindow sp)
 
 spaceIDHasWindowID :: SpaceID -> WindowID -> IO Bool
 spaceIDHasWindowID sid wid = do
