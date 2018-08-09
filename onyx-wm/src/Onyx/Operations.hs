@@ -8,6 +8,7 @@ import MacOS
 import RectUtils
 import Data.List.NonEmptyZipper (nextMod)
 import Lens.Micro.Platform ((%=), view, _Just, at,use)
+import Control.Applicative ((<|>), liftA2)
 
 msgToActive :: (Message msg) => msg -> EOnyx ()
 msgToActive m = activeSpace >>= flip sendMsgTo m
@@ -72,8 +73,11 @@ focusedWindow :: EOnyx Window
 focusedWindow = focusedApp >>= focusedWindowInApp
 
 focusSpace :: Space -> EOnyx ()
-focusSpace oss = withWorkspace oss $ \_ tws ->
-  maybe (throwError NoWindowsInSpace) (focusWindow) (fmap _twWindow (headMay tws))
+focusSpace sp = liftOnyx (liftA2 (<|>) firstTiled firstAll) >>= maybe err focusWindow
+  where
+    firstTiled = fmap join . eToM $ fmap _twWindow . headMay . snd <$> workspace sp
+    firstAll = fmap join . eToM $ headMay <$> windowsInSpace sp
+    err = throwError NoWindowsInSpace
 
 spaceAtDisplay :: Int -> EOnyx Space
 spaceAtDisplay i = do
