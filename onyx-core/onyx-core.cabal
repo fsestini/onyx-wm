@@ -1,0 +1,117 @@
+-- This file has been generated from package.yaml by hpack version 0.21.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 34067d348425931809ad948019ef1a79431db2af8b7d71b7b21b1e313705f9f5
+
+name:           onyx-core
+version:        0.1.0.0
+description:    Please see the README on Github
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    cbits/application.m
+    cbits/carbon.m
+    cbits/display.m
+    cbits/workspace.m
+
+library
+  exposed-modules:
+      AppleSdk
+      AppleSdk.Framework
+      AppleSdk.Framework.Accessibility
+      AppleSdk.Framework.Accessibility.Action
+      AppleSdk.Framework.Accessibility.Attribute
+      AppleSdk.Framework.Accessibility.Error
+      AppleSdk.Framework.Accessibility.Observer
+      AppleSdk.Framework.Accessibility.UIElement
+      AppleSdk.Framework.Accessibility.UINotification
+      AppleSdk.Framework.Accessibility.Value
+      AppleSdk.Framework.Carbon
+      AppleSdk.Framework.Carbon.Event
+      AppleSdk.Framework.Carbon.EventTypeSpec
+      AppleSdk.Framework.Carbon.Foreign
+      AppleSdk.Framework.Carbon.Process
+      AppleSdk.Framework.Carbon.PSN
+      AppleSdk.Framework.Cocoa
+      AppleSdk.Framework.CoreFoundation
+      AppleSdk.Framework.CoreFoundation.Allocator
+      AppleSdk.Framework.CoreFoundation.Array
+      AppleSdk.Framework.CoreFoundation.Boolean
+      AppleSdk.Framework.CoreFoundation.Dictionary
+      AppleSdk.Framework.CoreFoundation.MachPort
+      AppleSdk.Framework.CoreFoundation.Number
+      AppleSdk.Framework.CoreFoundation.Object
+      AppleSdk.Framework.CoreFoundation.RunLoop
+      AppleSdk.Framework.CoreFoundation.String
+      AppleSdk.Framework.CoreFoundation.UUID
+      AppleSdk.Framework.CoreGraphics
+      AppleSdk.Framework.CoreGraphics.Connection
+      AppleSdk.Framework.CoreGraphics.Display
+      AppleSdk.Framework.CoreGraphics.Dock
+      AppleSdk.Framework.CoreGraphics.Error
+      AppleSdk.Framework.CoreGraphics.Event
+      AppleSdk.Framework.CoreGraphics.Rect
+      AppleSdk.Framework.CoreGraphics.Space
+      AppleSdk.Framework.Keyboard
+      AppleSdk.Framework.Keyboard.Foreign
+      AppleSdk.Framework.Keyboard.KeyboardHandler
+      AppleSdk.Framework.Types
+      ExceptExtra
+      Logging
+      MacOS
+      MacOS.App
+      MacOS.Display
+      MacOS.Event
+      MacOS.Internal.App
+      MacOS.Internal.Display
+      MacOS.Internal.Event
+      MacOS.Internal.Keyboard
+      MacOS.Internal.LLEvent
+      MacOS.Internal.Process
+      MacOS.Internal.Type
+      MacOS.Internal.Window
+      MacOS.Internal.Workspace
+      MacOS.Keyboard
+      MacOS.Process
+      MacOS.Rectangle
+      MacOS.Space
+      MacOS.Window
+      Onyx.Prelude
+      RectUtils
+  other-modules:
+      Paths_onyx_core
+  hs-source-dirs:
+      src
+  default-extensions: TypeFamilies RecordWildCards TupleSections FlexibleInstances MultiParamTypeClasses FlexibleContexts GeneralizedNewtypeDeriving UndecidableInstances
+  ghc-options: -Wall -Wno-unused-top-binds -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -Wno-unticked-promoted-constructors
+  cc-options: -Wno-deprecated -Wno-int-to-void-pointer-cast
+  include-dirs:
+      cbits
+  c-sources:
+      cbits/application.m
+      cbits/carbon.m
+      cbits/display.m
+      cbits/keyboard.c
+      cbits/workspace.m
+  frameworks:
+      Carbon, Cocoa
+  build-depends:
+      base >=4.7 && <5
+    , composition
+    , containers
+    , ether
+    , extra
+    , managed
+    , microlens-platform
+    , mmorph
+    , monad-loops
+    , mtl
+    , safe
+    , split
+    , stm
+    , time
+  default-language: Haskell2010
