@@ -19,17 +19,6 @@ CFStringRef title_changed_notif() { return kAXTitleChangedNotification; }
 
 CFStringRef kCFRunLoopDefaultMode_() { return kCFRunLoopDefaultMode; }
 
-AXError error_invalid_element_observer() {
-  return kAXErrorInvalidUIElementObserver; }
-AXError error_illegal_argument() { return kAXErrorIllegalArgument; }
-AXError error_notification_unsupported() {
-  return kAXErrorNotificationUnsupported; }
-AXError error_notification_already_registered() {
-  return kAXErrorNotificationAlreadyRegistered; }
-AXError error_cannot_complete() { return kAXErrorCannotComplete; }
-AXError error_failure() { return kAXErrorFailure; }
-AXError error_success() { return kAXErrorSuccess; }
-
 int cgErrorCannotComplete() { return kCGErrorCannotComplete; }
 int cgErrorFailure() { return kCGErrorFailure; }
 int cgErrorIllegalArgument() { return kCGErrorIllegalArgument; }

@@ -15,6 +15,8 @@ module AppleSdk.Framework.Accessibility.Error
   -- , injAXResult
   ) where
 
+#include <Carbon/Carbon.h>
+
 import Foreign.C.Types (CInt(..))
 import AppleSdk.Framework.Types (Result(..), Action)
 -- import Control.Monad.Trans.Except
@@ -24,24 +26,18 @@ import AppleSdk.Framework.Types (Result(..), Action)
 
 type ForeignAXError = CInt
 
-foreign import ccall error_invalid_element_observer :: ForeignAXError
-foreign import ccall error_illegal_argument :: ForeignAXError
-foreign import ccall error_notification_unsupported :: ForeignAXError
-foreign import ccall error_notification_already_registered :: ForeignAXError
-foreign import ccall error_cannot_complete :: ForeignAXError
-foreign import ccall error_failure :: ForeignAXError
-foreign import ccall error_success :: ForeignAXError
-
 toAXResult :: ForeignAXError -> AXResult
 toAXResult e
-  | e == error_invalid_element_observer = Err AXErrorInvalidUIElementObserver
-  | e == error_illegal_argument = Err AXErrorIllegalArgument
-  | e == error_notification_unsupported = Err AXErrorNotificationUnsupported
-  | e == error_notification_already_registered =
+  | e == (#const kAXErrorInvalidUIElementObserver) =
+    Err AXErrorInvalidUIElementObserver
+  | e == (#const kAXErrorIllegalArgument) = Err AXErrorIllegalArgument
+  | e == (#const kAXErrorNotificationUnsupported) =
+    Err AXErrorNotificationUnsupported
+  | e == (#const kAXErrorNotificationAlreadyRegistered) =
     Err AXErrorNotificationAlreadyRegistered
-  | e == error_cannot_complete = Err AXErrorCannotComplete
-  | e == error_failure = Err AXErrorFailure
-  | e == error_success = Ok
+  | e == (#const kAXErrorCannotComplete) = Err AXErrorCannotComplete
+  | e == (#const kAXErrorFailure) = Err AXErrorFailure
+  | e == (#const kAXErrorSuccess) = Ok
   | otherwise = Err AXErrorOther
 
 -- toForeignAXError :: AXResult  -> ForeignAXError
