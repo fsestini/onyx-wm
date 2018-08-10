@@ -15,7 +15,3 @@ typedef OSStatus (carbon_event_callback_t)
 
 EventHandlerUPP handler_upp(carbon_event_callback_t *callb) {
   return NewEventHandlerUPP(callb); }
-
-uint32_t eventClassApplication() { return kEventClassApplication; }
-uint32_t eventAppLaunched() { return kEventAppLaunched; }
-uint32_t eventAppTerminated() { return kEventAppTerminated; }

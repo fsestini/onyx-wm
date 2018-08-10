@@ -23,6 +23,8 @@ module AppleSdk.Framework.Carbon.Event
   , getEventClass
   ) where
 
+#include <Carbon/Carbon.h>
+
 import Foreign.Ptr
 import Data.Word
 import AppleSdk.Framework.Types
@@ -60,9 +62,10 @@ foreign import ccall "wrapper"
 foreign import ccall "handler_upp"
   newEventHandlerUPP :: FunPtr CarbonEventCallback -> IO EventHandlerUPP
 
-foreign import ccall unsafe eventClassApplication :: Word32
-foreign import ccall unsafe eventAppLaunched :: Word32
-foreign import ccall unsafe eventAppTerminated :: Word32
+eventClassApplication, eventAppLaunched, eventAppTerminated :: Word32
+eventClassApplication = #const kEventClassApplication
+eventAppLaunched = #const kEventAppLaunched
+eventAppTerminated = #const kEventAppTerminated
 
 foreign import ccall unsafe "GetEventKind" getEventKind :: EventRef -> IO Word32
 foreign import ccall unsafe "GetEventClass" getEventClass :: EventRef -> IO Word32
