@@ -7,9 +7,6 @@ bool get_isback(ProcessSerialNumber *psn) {
   return (ProcessInfo.processMode & modeOnlyBackground) != 0;
 }
 
-EventParamName eventParamProcessID() { return kEventParamProcessID; }
-EventParamType typeProcessSerialNumber_() { return typeProcessSerialNumber; }
-
 typedef OSStatus (carbon_event_callback_t)
   (EventHandlerCallRef HandlerCallRef, EventRef Event, void *Refcon);
 

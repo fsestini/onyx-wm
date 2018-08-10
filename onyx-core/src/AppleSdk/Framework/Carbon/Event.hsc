@@ -81,9 +81,11 @@ data CarbonEvent
 type EventParamName = Word32
 type EventParamType = Word32
 
-foreign import ccall unsafe eventParamProcessID :: EventParamName
-foreign import ccall unsafe "typeProcessSerialNumber_"
-  typeProcessSerialNumber :: EventParamType
+eventParamProcessID :: EventParamName
+eventParamProcessID = #const kEventParamProcessID
+
+typeProcessSerialNumber :: EventParamType
+typeProcessSerialNumber = #const typeProcessSerialNumber
 
 foreign import ccall unsafe "GetEventParameter" getEventParameter
   :: EventRef -> EventParamName -> EventParamType -> Ptr EventParamType
