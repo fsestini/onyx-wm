@@ -19,18 +19,6 @@ CFStringRef title_changed_notif() { return kAXTitleChangedNotification; }
 
 CFStringRef kCFRunLoopDefaultMode_() { return kCFRunLoopDefaultMode; }
 
-int cgErrorCannotComplete() { return kCGErrorCannotComplete; }
-int cgErrorFailure() { return kCGErrorFailure; }
-int cgErrorIllegalArgument() { return kCGErrorIllegalArgument; }
-int cgErrorInvalidConnection() { return kCGErrorInvalidConnection; }
-int cgErrorInvalidContext() { return kCGErrorInvalidContext; }
-int cgErrorInvalidOperation() { return kCGErrorInvalidOperation; }
-int cgErrorNoneAvailable() { return kCGErrorNoneAvailable; }
-int cgErrorNotImplemented() { return kCGErrorNotImplemented; }
-int cgErrorRangeCheck() { return kCGErrorRangeCheck; }
-int cgErrorSuccess() { return kCGErrorSuccess; }
-int cgErrorTypeCheck() { return kCGErrorTypeCheck; }
-
 typedef int CGSConnectionID;
 extern CGSConnectionID _CGSDefaultConnection(void);
 extern CGError CGSGetWindowLevel(
