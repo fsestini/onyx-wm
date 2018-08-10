@@ -11,6 +11,7 @@ module AppleSdk.Framework.Keyboard
   , keycodeFromChar
   , toKeycode
   , toModPress
+  , initKeycodeMap
   ) where
 
 import AppleSdk.Framework.CoreGraphics.Event
@@ -147,3 +148,8 @@ setKeyboardCallback callb = do
   set_key_callback f
 
 foreign import ccall "keycode_from_char" keycodeFromChar :: Char -> Keycode
+
+foreign import ccall "initialize_keycode_map" init_keycode_map :: IO CBool
+
+initKeycodeMap :: IO Bool
+initKeycodeMap = fmap toBool init_keycode_map

@@ -85,12 +85,14 @@ handleEvent = (>> renderTree) . \case
 
 onyxMain :: IO ()
 onyxMain = do
-  macInitIO
-  _ <- forkIO . runMac . runOnyx c . logAndContinue () $ do
-    installHandlers (fmap (toKeyPress . fst) keyBindings)
-    populateInitialAppCache
-    lift $ renderTree >> forever (nextEvent >>= handleEvent)
-  runLoop
+  b <- macInitIO
+  if b then do
+    _ <- forkIO . runMac . runOnyx c . logAndContinue () $ do
+      installHandlers (fmap (toKeyPress . fst) keyBindings)
+      populateInitialAppCache
+      lift $ renderTree >> forever (nextEvent >>= handleEvent)
+    runLoop
+    else putStrLn "Initialization failed."
   where
     c = OnyxConfig (OptIn ["Terminal", "Emacs"]) 10
                      (SL defaultTall :| [SL Maximized])

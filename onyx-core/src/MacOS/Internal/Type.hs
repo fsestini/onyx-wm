@@ -11,7 +11,7 @@ import MacOS.Internal.App (App(..))
 
 import AppleSdk
        (WindowID, PID, Action, runAction, checkAXPrivileges, nsAppLoad,
-        setMessaging, CGError, AXError)
+        setMessaging, CGError, AXError, initKeycodeMap)
 
 import Control.Monad (void, join)
 import Control.Monad.Reader (ReaderT, ask,runReaderT)
@@ -124,8 +124,11 @@ runMac m = do
   v <- newTVarIO (MacState [] [])
   runReaderT (unMac m) (MacConfig q v)
 
-macInitIO :: IO ()
+macInitIO :: IO Bool
 macInitIO = do
-  logIO "Checking AX privileges: " $ checkAXPrivileges >>= print
-  logIO "NS App loading: " $ nsAppLoad >> (void . runAction) setMessaging
-  putStrLn "Internal NS initialization completed"
+  putStrLn "Checking AX privileges."
+  b1 <- checkAXPrivileges
+  nsAppLoad >> (void . runAction) setMessaging
+  putStrLn "Initializing keycode map."
+  b2 <- liftIO initKeycodeMap
+  pure (b1 && b2)
