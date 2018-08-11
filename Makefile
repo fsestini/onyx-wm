@@ -1,6 +1,12 @@
 default: hpack
 	cabal new-build all
 
+core: hpack
+	cabal new-build onyx-core
+
+wm: hpack
+	cabal new-build onyx-wm
+
 run:
 	cabal new-run onyx-wm-exe
 
