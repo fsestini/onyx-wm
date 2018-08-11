@@ -4,11 +4,6 @@
 void cgDisplayBounds_(uint32_t d_id, CGRect *rect)
 { *rect = CGDisplayBounds(d_id); }
 
-// bool stop_display_events() {
-//   CGError err = CGDisplayRemoveReconfigurationCallback(callback, NULL);
-//   return (err == kCGErrorSuccess);
-// }
-
 typedef int CGSConnectionID;
 typedef int CGSSpaceID;
 typedef int CGSSpaceType;
