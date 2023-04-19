@@ -1,3 +1,5 @@
 packages:
 	  onyx-core/
 	  onyx-wm/
+
+allow-newer: non-empty-zipper:base
