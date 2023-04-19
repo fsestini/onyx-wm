@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 34067d348425931809ad948019ef1a79431db2af8b7d71b7b21b1e313705f9f5
+-- hash: 69de668d8a8af1223fb268f659eb976b44bba705927a197605387ec362606440
 
 name:           onyx-core
 version:        0.1.0.0
@@ -101,17 +101,16 @@ library
       Carbon, Cocoa
   build-depends:
       base >=4.7 && <5
-    , composition
-    , containers
-    , ether
-    , extra
-    , managed
-    , microlens-platform
-    , mmorph
-    , monad-loops
-    , mtl
-    , safe
-    , split
-    , stm
-    , time
+    , composition <1.0.3
+    , containers <0.6.6
+    , extra <1.7.14
+    , managed <1.0.11
+    , microlens-platform <0.4.4
+    , mmorph <1.2.1
+    , monad-loops <0.4.4
+    , mtl <2.2.3
+    , safe <0.3.20
+    , split <0.2.4
+    , stm <2.5.1
+    , time <1.11.2
   default-language: Haskell2010

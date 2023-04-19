@@ -19,21 +19,18 @@ description:         Please see the README on Github
 
 dependencies:
 - base >= 4.7 && < 5
-- stm
-- managed
-- composition
-- containers
-- mtl
-- split
-# - transformers
-- time
-# - freer-simple
-- microlens-platform
-- extra
-- monad-loops
-- mmorph
-- ether
-- safe
+- stm < 2.5.1
+- managed < 1.0.11
+- composition < 1.0.3
+- containers < 0.6.6
+- mtl < 2.2.3
+- split < 0.2.4
+- time < 1.11.2
+- microlens-platform < 0.4.4
+- extra < 1.7.14
+- monad-loops < 0.4.4
+- mmorph < 1.2.1
+- safe < 0.3.20
 
 library:
   source-dirs: src

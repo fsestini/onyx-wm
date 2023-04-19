@@ -16,14 +16,14 @@ description:         Foo
 dependencies:
 - base >= 4.7 && < 5
 - onyx-core
-- containers
-- mtl
-- split
-- microlens-platform
-- non-empty-zipper
-- monad-loops
-- utility-ht
-- mmorph
+- containers < 0.6.6
+- mtl < 2.2.3
+- split < 0.2.4
+- microlens-platform < 0.4.4
+- non-empty-zipper < 0.1.1
+- monad-loops < 0.4.4
+- utility-ht < 0.0.17
+- mmorph < 1.2.1
 
 library:
   source-dirs: src

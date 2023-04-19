@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 89a64431a549eab9dabe458274c029e97f52c0851d4a5e0c220d312b394698bf
+-- hash: 3fb7a0e4c9c30558f7d11e4a0e20348e1a5a5ee8a7b8994b4cc802964c871a28
 
 name:           onyx-wm
 version:        0.1.0.0
@@ -19,15 +19,15 @@ library
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -Werror
   build-depends:
       base >=4.7 && <5
-    , containers
-    , microlens-platform
-    , mmorph
-    , monad-loops
-    , mtl
-    , non-empty-zipper
+    , containers <0.6.6
+    , microlens-platform <0.4.4
+    , mmorph <1.2.1
+    , monad-loops <0.4.4
+    , mtl <2.2.3
+    , non-empty-zipper <0.1.1
     , onyx-core
-    , split
-    , utility-ht
+    , split <0.2.4
+    , utility-ht <0.0.17
   exposed-modules:
       Data.List.Zipper
       Onyx.Core
@@ -48,16 +48,16 @@ executable onyx-wm-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , containers
-    , microlens-platform
-    , mmorph
-    , monad-loops
-    , mtl
-    , non-empty-zipper
+    , containers <0.6.6
+    , microlens-platform <0.4.4
+    , mmorph <1.2.1
+    , monad-loops <0.4.4
+    , mtl <2.2.3
+    , non-empty-zipper <0.1.1
     , onyx-core
     , onyx-wm
-    , split
-    , utility-ht
+    , split <0.2.4
+    , utility-ht <0.0.17
   other-modules:
       Paths_onyx_wm
   default-language: Haskell2010
