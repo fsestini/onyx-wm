@@ -7,7 +7,7 @@ module AppleSdk.Framework.Keyboard
   , Keycode
   , KeyFlags
   , KeyCallback
-  , setKeyboardCallback
+  -- , setKeyboardCallback
   , keycodeFromChar
   , toKeycode
   , toModPress
@@ -135,17 +135,17 @@ toModPress x = snd $ runState (toHotKeyFlags x) []
 --------------------------------------------------------------------------------
 
 type KeyCallback = KeyFlags -> Keycode -> IO Bool
-type RawCallback = CUInt -> CUInt -> IO CBool
+-- type RawCallback = CUInt -> CUInt -> IO CBool
 
-foreign import ccall set_key_callback :: FunPtr RawCallback -> IO ()
-foreign import ccall "wrapper"
-  wrap_key_callback :: RawCallback -> IO (FunPtr RawCallback)
+-- foreign import ccall set_key_callback :: FunPtr RawCallback -> IO ()
+-- foreign import ccall "wrapper"
+--   wrap_key_callback :: RawCallback -> IO (FunPtr RawCallback)
 
-setKeyboardCallback :: KeyCallback -> IO ()
-setKeyboardCallback callb = do
-  f <- wrap_key_callback $ \x y ->
-    fmap fromBool $ callb (fromIntegral x) (fromIntegral y)
-  set_key_callback f
+-- setKeyboardCallback :: KeyCallback -> IO ()
+-- setKeyboardCallback callb = do
+--   f <- wrap_key_callback $ \x y ->
+--     fmap fromBool $ callb (fromIntegral x) (fromIntegral y)
+--   set_key_callback f
 
 foreign import ccall "keycode_from_char" keycodeFromChar :: Char -> Keycode
 

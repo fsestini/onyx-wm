@@ -1,6 +1,6 @@
 module AppleSdk.Framework.Cocoa
   ( checkAXPrivileges
-  , setSignal
+  -- , setSignal
   , nsAppLoad
   , setMessaging
   , runLoop
@@ -32,8 +32,8 @@ checkAXPrivileges = do
   b <- booleanTrue
   createDictionary allo [s] [b] >>= isProcessTrustedWithOptions
 
-foreign import ccall
-  set_signal :: IO ()
+-- foreign import ccall
+--   set_signal :: IO ()
 
 foreign import ccall "NSApplicationLoad" ns_app_load :: IO ()
 
@@ -45,8 +45,8 @@ foreign import ccall "CFRunLoopRun" run_loop :: IO ()
 -- checkAXPrivileges :: IO Bool
 -- checkAXPrivileges = fmap Foreign.toBool check_ax_privileges
 
-setSignal :: IO ()
-setSignal = set_signal
+-- setSignal :: IO ()
+-- setSignal = set_signal
 
 nsAppLoad :: IO ()
 nsAppLoad = ns_app_load
