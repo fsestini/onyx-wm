@@ -2,6 +2,8 @@
 
 Onyx is a minimal tiling window manager for MacOS, written and configured in Haskell. Layouts and some data structures are taken from [xmonad](), with additional bits and pieces from [chunkwm](https://github.com/saforem2/chunkwm).
 
+While the WM is usable, the project is still experimental and largely undocumented.
+
 Last tested on MacOS Monterey 12.6.3.
 
 #### Build and run
