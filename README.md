@@ -8,6 +8,8 @@ Last tested on MacOS Monterey 12.6.3.
 
 #### Build and run
 
+Install [hpack](https://github.com/sol/hpack#readme), then execute:
+
     make
     cabal run onyx-wm
 
